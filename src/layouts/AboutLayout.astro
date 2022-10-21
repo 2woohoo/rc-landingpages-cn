@@ -10,11 +10,12 @@ export interface Props {
 		description: string;
 		pubDate?: string;
 		heroImage?: string;
+    author?: string;
 	};
 }
 
 const {
-	content: { title, description, pubDate, heroImage },
+	content: { title, description, pubDate, heroImage, author },
 } = Astro.props;
 ---
 
@@ -25,11 +26,14 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body class="font-Montserrat">
-    <div class="flex flex-col container h-screen m-0">
+    <div class="flex flex-col container min-h-screen m-0">
       <Header />
-      <article class="flex flex-col items-center mt-16 space-y-3">
-        <h1 class="text-2xl font-semibold">{title}</h1>
-        {pubDate && <time class="text-xs border-primary-500 border rounded-2xl px-3 py-1">{pubDate}</time>}
+      <article class="flex flex-col items-center mt-16 space-y-6 mb-8">
+        <h1 class="text-4xl font-semibold">{title}</h1>
+        <div class="flex flex-col justify-center items-center space-y-2">
+          {author && <div class="text-xs">{author}</div>}
+          {pubDate && <time class="text-xs border-primary-500 border rounded-2xl px-3 py-1">{pubDate}</time>}
+        </div>
         {heroImage && (
           <img
             width={720}
@@ -38,10 +42,11 @@ const {
             alt=""
           />
         )}
-        <div class="text-tertiary-600 text-sm text-start">
-          <slot />
-        </div>
+
       </article>
+      <div class="text-tertiary-600 text-sm text-start flex flex-col my-6 px-16">
+        <slot />
+      </div>
     </div>
     <Footer />
 	</body>
