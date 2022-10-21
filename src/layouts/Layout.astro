@@ -1,0 +1,20 @@
+---
+import '@fontsource/montserrat';
+import '@fontsource/montserrat/800.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>relay.club</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body class="font-Montserrat">
+    <div class="flex flex-col container h-screen">
+      <Header />
+      <slot /> <!-- your content is injected here -->
+      <Footer />
+    </div>
+  </body>
+</html>
